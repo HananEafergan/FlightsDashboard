@@ -1,16 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DurationPipe } from './pipes/duration.pipe';
+import { LoadingTemplateComponent } from './components/loading-template/loading-template.component';
 
 
 
 @NgModule({
   declarations: [
-    DurationPipe
+    DurationPipe,
+    LoadingTemplateComponent
   ],
   imports: [
-    CommonModule
+  CommonModule
   ],
-  exports: [DurationPipe]
+  exports: [DurationPipe, LoadingTemplateComponent]
 })
 export class SharedModule { }

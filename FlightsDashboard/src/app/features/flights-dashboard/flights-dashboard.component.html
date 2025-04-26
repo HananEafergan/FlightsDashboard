@@ -1,15 +1,20 @@
-<div style="display: flex; height: 100vh;">
-    <div style="width: 30%; border-right: 1px solid #ddd; overflow-y: auto;">
-      <app-workers-list [workers]="workers" (workerSelected)="getFlightsByWorker($event)" *ngIf="workers$ | async as workers; else loadingTemplate"></app-workers-list>
+<div class="dashboard-container">
+    <div class="panel workers-panel">
+        <app-workers-list [workers]="workers" (workerSelected)="getFlightsByWorker($event)"
+            *ngIf="workers$ | async as workers; else loadingTemplate"></app-workers-list>
     </div>
-    <div style="width: 40%; border-right: 1px solid #ddd; overflow-y: auto;">
-      <app-flights-list [flights]="flights" *ngIf="flights$ | async as flights; else loadingTemplate"></app-flights-list>
-    </div>
-    <div style="flex: 1; padding: 16px;">
-      <app-flight-info [flight]="selectedFlight" *ngIf="selectedFlight$ | async as selectedFlight"></app-flight-info>
-    </div>
-  </div>
 
-  <ng-template #loadingTemplate>
-    loading, please wait...
-  </ng-template>
+    <div class="panel flights-panel">
+        <app-flights-list [flights]="flights"
+            *ngIf="flights$ | async as flights; else loadingTemplate"></app-flights-list>
+    </div>
+
+    <div class="panel flight-info-panel">
+        <app-flight-info [flight]="selectedFlight" *ngIf="selectedFlight$ | async as selectedFlight; else loadingTemplate"></app-flight-info>
+    </div>
+</div>
+
+<ng-template #loadingTemplate>
+    <app-loading-template [loadingText]="'Loading flight, please wait'">
+    </app-loading-template>
+</ng-template>

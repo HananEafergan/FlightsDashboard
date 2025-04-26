@@ -38,6 +38,7 @@ export class StoreService {
   setWorkers(value: Worker[]) {
     this.workersSubject.next(value);
     if (!this.selectedWorkerSubject.getValue()) {
+      this.getFlightsByWorkerId(value[0].id);
       this.setSelectedWorkerInterval(value[0].id);
     }
   }
@@ -104,7 +105,7 @@ export class StoreService {
 
     const interval = setInterval(() => {
       this.getFlightsByWorkerId(workerId);
-    }, 1000
+    }, 60000
     );
     this.intervalSubject.next(+interval);
   }

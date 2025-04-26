@@ -12,28 +12,30 @@ import { Flight } from '../../models/flight.model';
   styleUrl: './flights-dashboard.component.scss',
   providers: [ApiService, StoreService]
 })
-export class FlightsDashboardComponent implements OnInit, OnDestroy{
+export class FlightsDashboardComponent implements OnInit, OnDestroy {
   workers$!: Observable<Worker[]>;
   flights$!: Observable<Flight[]>;
   error$!: Observable<string>;
   selectedFlight$!: Observable<Flight | null>;
 
-  constructor(private readonly store: StoreService) {}
-  
-  ngOnInit(): void{
+  constructor(private readonly store: StoreService) { }
+
+  ngOnInit(): void {
     this.workers$ = this.store.workers$;
     this.flights$ = this.store.flights$;
     this.error$ = this.store.error$;
     this.selectedFlight$ = this.store.selectedFlight$;
     this.store.getWorkers();
   }
-  
-  ngOnDestroy(): void{
+
+  ngOnDestroy(): void {
     this.store.destroy();
-  
+
   }
   getFlightsByWorker(workerId: number) {
-    this.store.setSelectedWorkerInterval(workerId);
+    this.store.setFlights([]);
     this.store.setSelectedFlight('');
+    this.store.setSelectedWorkerInterval(workerId);
+    this.store.getFlightsByWorkerId(workerId);
   }
 }

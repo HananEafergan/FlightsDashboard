@@ -1,27 +1,22 @@
-<div *ngIf="flights; else loadingTemplate">
-    <div *ngFor="let flight of flights" (click)="selectFlight(flight.num)">
-        <span>
-            {{flight.num}}
-        </span>
+<div class="flights-table" *ngIf="flights?.length; else loadingTemplate">
+    <div class="flights-header">
+        <div>Flight Number</div>
+        <div>Origin</div>
+        <div>Origin Date</div>
+        <div>Destination</div>
+        <div>Destination Date</div>
+    </div>
 
-        <span>
-            {{flight.from}}
-        </span>
-
-        <span>
-            {{flight.from_date}}
-        </span>
-
-        <span>
-            {{flight.to}}
-        </span>
-
-        <span>
-            {{flight.to_date}}
-        </span>
+    <div *ngFor="let flight of flights" class="flight-row" (click)="selectFlight(flight.num)">
+        <div>{{ flight.num }}</div>
+        <div>{{ flight.from }}</div>
+        <div>{{ flight.from_date }}</div>
+        <div>{{ flight.to }}</div>
+        <div>{{ flight.to_date }}</div>
     </div>
 </div>
 
 <ng-template #loadingTemplate>
-    loading, please wait
-</ng-template>
+    <app-loading-template [loadingText]="'Loading flights...'">
+    </app-loading-template>
+  </ng-template>

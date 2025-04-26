@@ -1,0 +1,27 @@
+.flights-header,
+.flight-row {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 2fr 1.5fr 2fr;
+    align-items: center;
+    padding: 12px 8px;
+    gap: 8px;
+}
+
+.flights-header {
+    background-color: #eef1f4;
+    font-weight: bold;
+    border-bottom: 2px solid #ccc;
+}
+
+.flight-row {
+    background-color: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-top: 8px;
+    transition: background 0.2s;
+
+    &:hover {
+        background: #e8eff7;
+        cursor: pointer;
+    }
+}

@@ -1,18 +1,26 @@
-<div *ngIf="flight">
-    <div>
-        <span>Plane Number:</span>        
-        <span>{{flight.plane}}</span>
+<div *ngIf="flight; else loadingTemplate" class="flight-info-card">
+    <div class="info-row">
+        <span class="label">Plane Number:</span>
+        <span class="value">{{ flight.plane }}</span>
     </div>
-    <div>
-        <span>Duration:</span>
-        <span>{{flight.duration | duration}}</span>
+
+    <div class="info-row">
+        <span class="label">Duration:</span>
+        <span class="value">{{ flight.duration | duration }}</span>
     </div>
-    <div>
-        <span>Origin Gate:</span>
-        <span>{{flight.from_gate}}</span>
+
+    <div class="info-row">
+        <span class="label">Origin Gate:</span>
+        <span class="value">{{ flight.from_gate }}</span>
     </div>
-    <div>
-        <span>Destination Gate:</span>
-        <span>{{flight.to_gate}}</span>
+
+    <div class="info-row">
+        <span class="label">Destination Gate:</span>
+        <span class="value">{{ flight.to_gate }}</span>
     </div>
 </div>
+
+<ng-template #loadingTemplate>
+    <app-loading-template [loadingText]="'Loading flight info...'">
+    </app-loading-template>
+</ng-template>

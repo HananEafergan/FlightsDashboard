@@ -1,0 +1,19 @@
+.workers-table {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .worker-row {
+    padding: 12px;
+    margin-bottom: 8px;
+    background: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+  
+    &:hover {
+      background: #e8eff7;
+      transform: translateY(-2px);
+    }
+  }  
