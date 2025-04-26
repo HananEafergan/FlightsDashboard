@@ -1,0 +1,18 @@
+<div *ngIf="flight">
+    <div>
+        <span>Plane Number:</span>        
+        <span>{{flight.plane}}</span>
+    </div>
+    <div>
+        <span>Duration:</span>
+        <span>{{flight.duration | duration}}</span>
+    </div>
+    <div>
+        <span>Origin Gate:</span>
+        <span>{{flight.from_gate}}</span>
+    </div>
+    <div>
+        <span>Destination Gate:</span>
+        <span>{{flight.to_gate}}</span>
+    </div>
+</div>

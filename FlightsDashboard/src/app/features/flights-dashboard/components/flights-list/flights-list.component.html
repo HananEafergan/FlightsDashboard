@@ -1,0 +1,27 @@
+<div *ngIf="flights; else loadingTemplate">
+    <div *ngFor="let flight of flights" (click)="selectFlight(flight.num)">
+        <span>
+            {{flight.num}}
+        </span>
+
+        <span>
+            {{flight.from}}
+        </span>
+
+        <span>
+            {{flight.from_date}}
+        </span>
+
+        <span>
+            {{flight.to}}
+        </span>
+
+        <span>
+            {{flight.to_date}}
+        </span>
+    </div>
+</div>
+
+<ng-template #loadingTemplate>
+    loading, please wait
+</ng-template>

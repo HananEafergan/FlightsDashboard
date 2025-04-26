@@ -1,0 +1,9 @@
+<div class="workers-table" *ngIf="workers; else loadingTemplate">
+    <div class="worker-row" *ngFor="let worker of workers" (click)="selectWorker(worker)">
+        {{worker.name}}
+    </div>
+</div>
+
+<ng-template #loadingTemplate>
+    Loading, please wait
+</ng-template>
